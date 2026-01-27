@@ -1,380 +1,1911 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rota do Grão | O Café Premium</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <title>Rota do Grão — Máquinas de Espresso Personalizadas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --bg-alt: #111116;
+      --card-bg: #15151c;
+      --text: #f7f7f7;
+      --muted: #b3b3bd;
+      --accent: #d4af37;
+      --accent-soft: rgba(212, 175, 55, 0.12);
+      --border: #262633;
+      --danger: #ff4b4b;
+      --radius: 10px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --transition: 0.25s ease;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", "Segoe UI", sans-serif;
+    }
 
-    <style>
-        /* --- CONFIGURAÇÕES GERAIS E VARIÁVEIS --- */
-        :root {
-            --bg-black: #111111; /* Preto Matte Profundo */
-            --bg-white: #FFFFFF;
-            --bg-light: #F9F9F9;
-            --gold: #C6A87C;     /* Dourado Sofisticado */
-            --text-dark: #1A1A1A;
-            --text-gray: #666666;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
+    body {
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at top, #181822 0, #050509 55%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
 
-        body {
-            background-color: var(--bg-white);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden; /* Evita rolagem horizontal indesejada */
-        }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        h2 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
+    main {
+      min-height: 100vh;
+    }
 
-        /* --- BOTÕES --- */
-        .btn {
-            background-color: var(--gold);
-            color: #fff;
-            padding: 16px 32px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: inline-block;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(198, 168, 124, 0.3);
-        }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
 
-        .btn:hover {
-            background-color: #b09265;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(198, 168, 124, 0.5);
-        }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      margin-bottom: 32px;
+    }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            background-color: var(--bg-black);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 90vh;
-            position: relative;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .hero-content {
-            flex: 1;
-            padding: 0 5% 0 10%;
-            max-width: 50%;
-            z-index: 2;
-        }
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #f5f5f5 0, #222 40%, #000 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .brand-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            display: block;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      opacity: 0.7;
+    }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            font-weight: 800;
-        }
+    .logo-mark span {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 3rem;
-            max-width: 480px;
-            font-weight: 300;
-        }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-        .hero-image-container {
-            flex: 1;
-            height: 90vh;
-            position: relative;
-            /* Overlay sutil para garantir leitura do texto caso a imagem seja muito clara nas bordas */
-        }
+    .logo-text strong {
+      font-size: 18px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
 
-        .hero-image-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, var(--bg-black) 0%, transparent 50%);
-        }
+    .logo-text span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
 
-        .hero-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        /* Ajuste Responsivo Hero */
-        @media (max-width: 968px) {
-            .hero { flex-direction: column; padding: 80px 20px; text-align: center; height: auto; min-height: auto;}
-            .hero-content { padding: 0; max-width: 100%; margin-bottom: 50px; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { margin: 0 auto 30px auto; }
-            .hero-image-container { width: 100%; height: 400px; border-radius: 12px; overflow: hidden; }
-            .hero-image-container::after { background: linear-gradient(to bottom, var(--bg-black) 0%, transparent 30%); }
-        }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
 
-        /* --- BENEFÍCIOS --- */
-        .benefits { padding: 120px 0; background: var(--bg-white); }
-        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
-        .b-card { text-align: center; background: white; border-radius: 12px; overflow: hidden; transition: 0.4s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .b-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .b-img { width: 100%; height: 220px; object-fit: cover; }
-        .b-content { padding: 25px; }
-        .b-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--text-dark); }
-        .b-card p { color: var(--text-gray); font-size: 0.95rem; }
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
 
-        /* --- PROVA SOCIAL --- */
-        .social-proof { background-color: var(--bg-black); color: white; padding: 120px 0; }
-        .social-proof h2 { color: white; margin-bottom: 15px; }
-        .social-subtitle { text-align: center; color: #999; margin-bottom: 60px; font-weight: 400; font-size: 1.1rem;}
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .review-card { background: #1a1a1a; padding: 30px; border-radius: 12px; border: 1px solid #333; transition: 0.3s; }
-        .review-card:hover { border-color: var(--gold); }
-        .review-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
-        .stars { color: var(--gold); margin-bottom: 15px; }
-        .review-text { font-size: 1rem; color: #ddd; font-style: italic; line-height: 1.6; margin-bottom: 20px; }
-        .client-info { display: flex; align-items: center; }
-        .client-avatar { width: 40px; height: 40px; background: #333; border-radius: 50%; margin-right: 10px; background-size: cover;}
-        .client-name { font-weight: 700; font-size: 0.9rem; color: var(--gold); }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), #ffffff);
+      transition: width var(--transition);
+    }
 
-        /* --- COMO FUNCIONA --- */
-        .how-it-works { padding: 120px 0; background-color: var(--bg-light); text-align: center; }
-        .steps-flex { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-top: 70px; max-width: 900px; margin-left: auto; margin-right: auto; }
-        .step { flex: 1; min-width: 220px; position: relative; }
-        
-        /* Linha conectora */
-        .step:not(:last-child)::after { content: ''; position: absolute; top: 40px; right: -50%; width: 100%; height: 2px; background: #ddd; z-index: 0; }
-        @media (max-width: 768px) { .step:not(:last-child)::after { display: none; } }
-        
-        .step-icon { width: 80px; height: 80px; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--text-dark); background: white; border: 2px solid var(--gold); border-radius: 50%; position: relative; z-index: 1; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .step h3 { font-size: 1.2rem; margin-bottom: 10px; font-weight: 700; }
-        .step p { color: var(--text-gray); font-size: 0.9rem; }
+    nav a:hover::after {
+      width: 100%;
+    }
 
-        /* --- PLANOS --- */
-        .pricing { padding: 120px 0; background-color: var(--bg-white); }
-        .pricing-grid { display: flex; justify-content: center; gap: 30px; align-items: center; flex-wrap: wrap; }
-        .price-card { background: white; padding: 50px 40px; border-radius: 12px; text-align: center; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #eee; transition: 0.3s; }
-        .price-card:hover { transform: translateY(-5px); }
-        .price-card.featured { background: var(--bg-black); color: white; border: 2px solid var(--gold); transform: scale(1.08); position: relative; z-index: 2; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .price-card.featured:hover { transform: scale(1.1); }
-        .badge { background: var(--gold); color: white; padding: 8px 18px; border-radius: 30px; font-size: 0.75rem; text-transform: uppercase; font-weight: 800; display: inline-block; margin-bottom: 25px; letter-spacing: 1px; }
-        .price-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .price-card.featured h3 { color: white; }
-        .price-card p { color: var(--text-gray); margin-bottom: 30px; }
-        .price-card.featured p { color: #ccc; }
+    .nav-cta {
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition),
+        box-shadow var(--transition), border-color var(--transition);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
 
-        /* --- GARANTIA --- */
-        .guarantee { text-align: center; padding: 60px 0; background: #f4f0e8; border-top: 1px solid #e0d8c8; }
-        .guarantee i { color: var(--gold); font-size: 2rem; vertical-align: middle; margin-right: 15px; }
-        .guarantee span { font-weight: 700; font-size: 1.1rem; color: var(--text-dark); vertical-align: middle; text-transform: uppercase; letter-spacing: 1px; }
+    .nav-cta span {
+      font-size: 14px;
+    }
 
-        /* --- FOOTER --- */
-        .footer-cta { background: var(--bg-black); color: white; text-align: center; padding: 100px 20px; }
-        .footer-cta h3 { font-size: 2.5rem; margin-bottom: 40px; line-height: 1.2; font-weight: 800; }
-        .footer-bottom { background: #000; color: #666; padding: 40px 0; text-align: center; font-size: 0.9rem; }
-        .footer-bottom .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .social-icons i { margin-left: 20px; font-size: 1.2rem; cursor: pointer; transition: 0.3s; color: #888;}
-        .social-icons i:hover { color: var(--gold); }
+    .nav-cta:hover {
+      background: linear-gradient(135deg, #111, #222);
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
 
-        @media (max-width: 768px) {
-            h2 { font-size: 1.5rem; }
-            .footer-cta h3 { font-size: 1.8rem; }
-            .footer-bottom .container { flex-direction: column; }
-            .social-icons i { margin: 0 10px; }
-        }
-    </style>
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 40px;
+      align-items: center;
+      margin-top: 24px;
+      margin-bottom: 56px;
+    }
+
+    .hero-copy {
+      animation: fadeUp 0.7s ease-out both;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+    }
+
+    .hero-eyebrow-pill {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, #444 35%, #000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-eyebrow-pill::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      opacity: 0.8;
+    }
+
+    .hero-eyebrow-pill span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #f5f5f5 0, #222 40%, #000 100%);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero-eyebrow-text {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #ffffff, #f5e6c4, var(--accent));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 22px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-highlights span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-highlights span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, var(--accent) 40%, #000 100%);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 12px 26px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: linear-gradient(135deg, #f5e6c4, var(--accent), #b88a1b);
+      color: #111;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+      transition: transform var(--transition), box-shadow var(--transition),
+        filter var(--transition);
+    }
+
+    .btn-primary span {
+      font-size: 16px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.85);
+      filter: brightness(1.03);
+    }
+
+    .btn-ghost {
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.4);
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition),
+        color var(--transition), transform var(--transition);
+    }
+
+    .btn-ghost span {
+      font-size: 16px;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .hero-visual {
+      position: relative;
+      animation: fadeUp 0.9s ease-out both;
+    }
+
+    .hero-frame {
+      position: relative;
+      border-radius: 26px;
+      padding: 18px;
+      background: radial-gradient(circle at top left, #2a2a33 0, #050509 55%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0, rgba(255, 255, 255, 0.12) 0, transparent 40%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      position: absolute;
+      top: 18px;
+      left: 22px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .hero-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, var(--accent) 40%, #000 100%);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25);
+    }
+
+    .hero-photo {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at 20% 0, #3a3a44 0, #050509 55%);
+      min-height: 260px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 26px 26px 30px;
+      z-index: 1;
+    }
+
+    .hero-photo-surface {
+      position: absolute;
+      inset: auto 10% 18px 10%;
+      height: 26px;
+      background: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.18) 0, #111 55%);
+      border-radius: 999px;
+      filter: blur(1px);
+      opacity: 0.9;
+    }
+
+    .machine {
+      position: relative;
+      width: 70%;
+      max-width: 260px;
+      aspect-ratio: 3 / 4;
+      border-radius: 22px;
+      background: radial-gradient(circle at 20% 0, #444 0, #111 40%, #000 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      padding: 18px 16px 16px;
+      color: #f5f5f5;
+    }
+
+    .machine-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .machine-top span:last-child {
+      font-size: 9px;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .machine-display {
+      height: 32px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 20% 0, #333 0, #111 55%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .machine-display span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .machine-display-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, var(--accent) 40%, #000 100%);
+    }
+
+    .machine-body {
+      flex: 1;
+      border-radius: 14px;
+      background: radial-gradient(circle at 20% 0, #222 0, #050509 55%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 10px 10px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .machine-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .machine-knobs {
+      display: flex;
+      gap: 6px;
+    }
+
+    .machine-knob {
+      flex: 1;
+      height: 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #f5f5f5 0, #444 40%, #111 100%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .machine-knob::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      opacity: 0.7;
+    }
+
+    .machine-bar {
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #444, #777);
+      margin-top: 4px;
+    }
+
+    .machine-cup-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .machine-cup {
+      width: 40px;
+      height: 32px;
+      border-radius: 0 0 12px 12px;
+      background: radial-gradient(circle at 20% 0, #f5f5f5 0, #c7c7c7 40%, #999 100%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .machine-cup::after {
+      content: "";
+      position: absolute;
+      inset: 8px 6px 4px;
+      border-radius: 8px;
+      background: linear-gradient(to bottom, #4b2b16, #2a1408);
+    }
+
+    .machine-cup-handle {
+      position: absolute;
+      right: -8px;
+      top: 10px;
+      width: 10px;
+      height: 14px;
+      border-radius: 0 10px 10px 0;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-left: none;
+    }
+
+    .machine-drip {
+      width: 2px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(to bottom, #f5e6c4, #b88a1b);
+      margin-top: -4px;
+    }
+
+    .machine-base {
+      margin-top: 8px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 50% 0, #444 0, #111 55%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .hero-detail-card {
+      position: absolute;
+      right: -6px;
+      bottom: 18px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 180px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-detail-card strong {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #ffffff;
+    }
+
+    .hero-detail-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+    }
+
+    .hero-detail-meta span:last-child {
+      color: var(--accent);
+    }
+
+    .hero-detail-pill {
+      margin-top: 4px;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-detail-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, var(--accent) 40%, #000 100%);
+    }
+
+    .section {
+      margin-bottom: 56px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 360px;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: 18px;
+      background: radial-gradient(circle at top, #181822 0, #050509 55%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0, rgba(255, 255, 255, 0.08) 0, transparent 40%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .card-image {
+      border-radius: 14px;
+      background: radial-gradient(circle at 20% 0, #3a3a44 0, #050509 55%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      height: 120px;
+      position: relative;
+      overflow: hidden;
+      /* Ensure images cover */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+          120deg,
+          rgba(0, 0, 0, 0.4),
+          transparent 40%
+        );
+      mix-blend-mode: multiply;
+      opacity: 0.7;
+    }
+
+    .card-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1.1fr;
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .review {
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .review-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #f5f5f5 0, #999 40%, #555 100%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .avatar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      opacity: 0.7;
+    }
+
+    .review-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .review-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .stars {
+      font-size: 12px;
+      color: #f5e6c4;
+    }
+
+    .ugc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .ugc-item {
+      border-radius: 16px;
+      background: radial-gradient(circle at 20% 0, #3a3a44 0, #050509 55%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      height: 120px;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .ugc-item:hover {
+        transform: scale(1.02);
+    }
+
+    .ugc-item::after {
+      content: "Cantinho do café real";
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step {
+      border-radius: 18px;
+      background: radial-gradient(circle at top, #181822 0, #050509 55%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .step-text {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .plan {
+      border-radius: 20px;
+      background: radial-gradient(circle at top, #181822 0, #050509 55%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .plan.featured {
+      border-color: var(--accent);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.9);
+      transform: translateY(-4px);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .plan-name {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .plan-price {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .plan-price span {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 4px;
+    }
+
+    .plan-desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .plan-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 6px 0 10px;
+    }
+
+    .plan-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .plan-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, var(--accent) 40%, #000 100%);
+      margin-top: 5px;
+    }
+
+    .plan-cta {
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .plan-cta button {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--text);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition),
+        transform var(--transition);
+    }
+
+    .plan.featured .plan-cta button {
+      background: linear-gradient(135deg, #f5e6c4, var(--accent), #b88a1b);
+      color: #111;
+      border-color: transparent;
+    }
+
+    .plan-cta button:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .plan.featured .plan-cta button:hover {
+      filter: brightness(1.03);
+    }
+
+    .faq {
+      border-radius: 20px;
+      background: radial-gradient(circle at top, #181822 0, #050509 55%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 18px 16px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .accordion-item + .accordion-item {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .accordion-header {
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      gap: 12px;
+    }
+
+    .accordion-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .accordion-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+      font-size: 13px;
+      color: var(--muted);
+      padding-right: 18px;
+    }
+
+    .accordion-content-inner {
+      padding-bottom: 10px;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 200px;
+    }
+
+    .accordion-item.active .accordion-icon {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .guarantee {
+      text-align: center;
+      margin: 40px 0 32px;
+    }
+
+    .guarantee-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: radial-gradient(circle at top, #181822 0, #050509 55%);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .guarantee-badge strong {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #ffffff;
+    }
+
+    .guarantee-ring {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guarantee-ring::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      opacity: 0.7;
+    }
+
+    .guarantee-ring span {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, var(--accent) 40%, #000 100%);
+    }
+
+    .form-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 26px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .form-copy-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 8px;
+    }
+
+    .form-copy-text {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 360px;
+    }
+
+    form {
+      border-radius: 18px;
+      background: radial-gradient(circle at top, #181822 0, #050509 55%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .field label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .field input {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 8px 12px;
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition),
+        background var(--transition);
+    }
+
+    .field input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.4);
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .form-note span {
+      color: var(--accent);
+    }
+
+    .cta-final {
+      text-align: center;
+      margin: 40px 0 32px;
+    }
+
+    .cta-final p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 18px;
+      margin-top: 32px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 10px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .social-pill {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+
+    .footer-security {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 10px;
+    }
+
+    .security-badge {
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .benefits-grid,
+      .steps,
+      .plans-grid,
+      .form-section {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .social-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-inline: 16px;
+      }
+
+      header {
+        padding-bottom: 18px;
+        margin-bottom: 24px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .hero {
+        margin-bottom: 40px;
+      }
+
+      .hero-frame {
+        padding: 14px;
+      }
+
+      .hero-photo {
+        padding: 20px 18px 24px;
+      }
+
+      .hero-detail-card {
+        position: static;
+        margin-top: 12px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .guarantee {
+        margin: 30px 0 24px;
+      }
+
+      .cta-final {
+        margin: 30px 0 24px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <header class="hero">
-        <div class="hero-content">
-            <span class="brand-name">Rota do Grão</span>
-            <h1>O café que<br>completa a sua<br>decoração.</h1>
-            <p>Máquinas de espresso com design exclusivo e grãos especiais selecionados. Transforme seu cantinho do café no destaque da sua casa.</p>
-            <a href="#planos" class="btn">Quero personalizar minha máquina</a>
+  <main>
+    <div class="page">
+      <header>
+        <div class="logo">
+          <div class="logo-mark">
+            <span>RG</span>
+          </div>
+          <div class="logo-text">
+            <strong>Rota do Grão</strong>
+            <span>espresso & design</span>
+          </div>
         </div>
-        <div class="hero-image-container">
-            <img src="https://images.unsplash.com/photo-1590757736465-98539207e32a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=90" alt="Máquina de Espresso Premium Preta Matte">
-        </div>
-    </header>
+        <nav>
+          <a href="#beneficios">Benefícios</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#planos">Planos</a>
+          <a href="#faq">FAQ</a>
+          <button class="nav-cta" onclick="scrollToCTA()">
+            <span>●</span> Personalizar meu kit
+          </button>
+        </nav>
+      </header>
 
-    <section class="benefits">
-        <div class="container">
-            <h2>Por que Rota do Grão?</h2>
-            <div class="benefits-grid">
-                <div class="b-card">
-                    <img src="https://images.unsplash.com/photo-1606450692728-66a935401347?auto=format&fit=crop&w=600&q=80" alt="Design Minimalista" class="b-img">
-                    <div class="b-content">
-                        <h3>Design que harmoniza</h3>
-                        <p>Acabamento Matte Premium e detalhes em dourado que eliminam o ruído visual da sua cozinha.</p>
-                    </div>
-                </div>
-                <div class="b-card">
-                    <img src="https://images.unsplash.com/photo-1507133750069-775b0f0ea7bb?auto=format&fit=crop&w=600&q=80" alt="Extração de Café" class="b-img">
-                    <div class="b-content">
-                        <h3>Café de Barista em casa</h3>
-                         <p>Extração perfeita com pressão de 19 bar para um crema espesso e aveludado.</p>
-                    </div>
-                </div>
-                <div class="b-card">
-                    <img src="https://images.unsplash.com/photo-1552554228-4448378d3882?auto=format&fit=crop&w=600&q=80" alt="Grãos Frescos" class="b-img">
-                    <div class="b-content">
-                        <h3>Frescor da torra</h3>
-                         <p>Receba grãos de micro-lotes selecionados, torrados dias antes do envio.</p>
-                    </div>
-                </div>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">
+            <div class="hero-eyebrow-pill">
+              <span></span>
             </div>
-        </div>
-    </section>
-
-    <section class="social-proof">
-        <div class="container">
-            <h2>Prova Social</h2>
-            <p class="social-subtitle">Quem já transformou seu ambiente com a nossa assinatura.</p>
-            
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80" alt="Cantinho do Café Moderno" class="review-img">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"Finalmente uma máquina que não parece um eletrodoméstico genérico. O preto fosco é chiquérrimo e o café sai perfeito."</p>
-                    <div class="client-info">
-                        <div class="client-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
-                        <span class="client-name">Ana P., Arquiteta</span>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?auto=format&fit=crop&w=600&q=80" alt="Cozinha Minimalista" class="review-img">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"Assinei o plano de grãos junto com a máquina. O aroma quando a caixa chega é incrível. Não troco por nada."</p>
-                    <div class="client-info">
-                        <div class="client-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg');"></div>
-                        <span class="client-name">Carlos M., Designer</span>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Estação de Café em Casa" class="review-img">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"O kit completo valeu muito a pena. A máquina é silenciosa e a estética elevou o nível da minha sala de estar."</p>
-                    <div class="client-info">
-                        <div class="client-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/68.jpg');"></div>
-                        <span class="client-name">Fernanda L., Empresária</span>
-                    </div>
-                </div>
+            <div class="hero-eyebrow-text">
+              Máquinas de espresso + clube de cafés
             </div>
+          </div>
+          <h1 class="hero-title">
+            O café que <span>completa a sua decoração.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Máquinas de espresso com design exclusivo e grãos especiais selecionados. Transforme seu cantinho do café no destaque da sua casa.
+          </p>
+          <div class="hero-highlights">
+            <span>Acabamento preto matte, branco e dourado</span>
+            <span>Curadoria de cafés especiais torrados na semana</span>
+            <span>Assinatura flexível, sem complicação</span>
+          </div>
+          <div class="hero-cta-row">
+            <button class="btn-primary" onclick="scrollToCTA()">
+              Quero personalizar minha máquina
+              <span>↗</span>
+            </button>
+            <button class="btn-ghost" onclick="scrollToSection('como-funciona')">
+              Ver como funciona
+              <span>⟶</span>
+            </button>
+          </div>
+          <p class="hero-note">
+            Pensado para entusiastas de design que não aceitam eletrodomésticos genéricos destoando da estética da casa.
+          </p>
         </div>
-    </section>
 
-    <section class="how-it-works">
-        <div class="container">
-            <h2>Como Funciona</h2>
-            <div class="steps-flex">
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-sliders-h"></i></div>
-                    <h3>1. Escolha o Design</h3>
-                    <p>Personalize sua máquina com acabamentos exclusivos.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-box-open"></i></div>
-                    <h3>2. Selecione os Grãos</h3>
-                    <p>Defina a frequência e o tipo de torra do seu clube.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-home"></i></div>
-                    <h3>3. Receba em Casa</h3>
-                    <p>Tudo pronto para criar sua experiência de café.</p>
-                </div>
+        <div class="hero-visual">
+          <div class="hero-frame">
+            <div class="hero-tag">
+              <div class="hero-tag-dot"></div>
+              Close-up em cozinha moderna
             </div>
-        </div>
-    </section>
-
-    <section class="pricing" id="planos">
-        <div class="container">
-            <h2>Escolha seu Kit</h2>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Só Máquina</h3>
-                    <p>Apenas o equipamento premium</p>
-                    <a href="#" class="btn" style="background: #333; font-size: 0.8rem; box-shadow: none;">Ver Detalhes</a>
+            <div class="hero-photo">
+              <div class="hero-photo-surface"></div>
+              <div class="machine">
+                <div class="machine-top">
+                  <span>Rota do Grão</span>
+                  <span>Design Signature</span>
                 </div>
-                <div class="price-card featured">
-                    <div class="badge">Mais Vendido</div>
-                    <h3>Kit Completo</h3>
-                    <p>Máquina + 1º Mês de Grãos Grátis</p>
-                    <div style="font-size: 0.85rem; border: 1px solid var(--gold); display: inline-block; padding: 8px 15px; border-radius: 30px; color: var(--gold); margin-bottom: 25px; font-weight: 600;">Desconto Exclusivo</div>
-                    <br>
-                    <a href="#" class="btn">Quero o Kit Completo</a>
+                <div class="machine-display">
+                  <span>
+                    <div class="machine-display-dot"></div>
+                    Espresso perfeito em casa
+                  </span>
+                  <span>92ºC · 9 bar</span>
                 </div>
-                <div class="price-card">
-                    <h3>Clube de Assinatura</h3>
-                    <p>Apenas grãos selecionados</p>
-                    <a href="#" class="btn" style="background: #333; font-size: 0.8rem; box-shadow: none;">Assinar Clube</a>
+                <div class="machine-body">
+                  <div class="machine-group">
+                    <div class="machine-knobs">
+                      <div class="machine-knob"></div>
+                      <div class="machine-knob"></div>
+                    </div>
+                    <div class="machine-bar"></div>
+                  </div>
+                  <div class="machine-cup-area">
+                    <div class="machine-drip"></div>
+                    <div class="machine-cup">
+                      <div class="machine-cup-handle"></div>
+                    </div>
+                    <div class="machine-base"></div>
+                  </div>
                 </div>
+              </div>
+              <div class="hero-detail-card">
+                <strong>Acabamento preto matte + dourado</strong>
+                <div class="hero-detail-meta">
+                  <span>Bancada de mármore · luz natural</span>
+                  <span>UGC</span>
+                </div>
+                <div class="hero-detail-pill">
+                  <div class="hero-detail-pill-dot"></div>
+                  Cantinho do café que vira protagonista
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <div class="guarantee">
-        <div class="container">
-            <i class="fas fa-shield-alt"></i>
-            <span>Garantia: 30 dias de satisfação ou troca do design</span>
+      <section id="beneficios" class="section fade-up">
+        <div class="section-header">
+          <div>
+            <div class="section-tag">Benefícios</div>
+            <h2 class="section-title">Mais do que café, um objeto de desejo</h2>
+          </div>
+          <p class="section-subtitle">
+            Cada máquina é pensada para harmonizar com o seu ambiente, enquanto o clube de cafés garante xícaras dignas de barista, sempre frescas.
+          </p>
         </div>
+
+        <div class="benefits-grid">
+          <article class="card">
+            <div class="card-image" style="background-image: url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
+            <div class="card-label">Benefício 01</div>
+            <h3 class="card-title">Design que harmoniza</h3>
+            <p class="card-text">
+              Linhas minimalistas, acabamento preto matte, branco e detalhes em dourado que se integram à sua decoração sem competir com ela.
+            </p>
+          </article>
+
+          <article class="card">
+             <div class="card-image" style="background-image: url('https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
+            <div class="card-label">Benefício 02</div>
+            <h3 class="card-title">Café de barista em casa</h3>
+            <p class="card-text">
+              Pressão e temperatura calibradas para extrair o melhor dos grãos especiais, com crema densa e aroma marcante em cada extração.
+            </p>
+          </article>
+
+          <article class="card">
+             <div class="card-image" style="background-image: url('https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
+            <div class="card-label">Benefício 03</div>
+            <h3 class="card-title">Frescor da torra</h3>
+            <p class="card-text">
+              Clube de assinatura com cafés torrados na semana, enviados em embalagens que preservam o frescor e a complexidade sensorial.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section fade-up">
+        <div class="section-header">
+          <div>
+            <div class="section-tag">Prova social</div>
+            <h2 class="section-title">Cantinhos do café que inspiram</h2>
+          </div>
+          <p class="section-subtitle">
+            Veja como outros entusiastas de design transformaram seus espaços com a Rota do Grão — máquinas e cafés em perfeita sintonia.
+          </p>
+        </div>
+
+        <div class="social-grid">
+          <div class="reviews-list">
+            <div class="review">
+              <div class="review-header">
+                <div class="review-user">
+                  <div class="avatar" style="background-image: url('https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100');"></div>
+                  <div>
+                    <div class="review-name">Marina · Arquiteta</div>
+                    <div class="review-meta">São Paulo · SP</div>
+                  </div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>
+                “Finalmente encontrei uma máquina que não parece um eletrodoméstico genérico. Ela virou o ponto focal da minha cozinha.”
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-header">
+                <div class="review-user">
+                  <div class="avatar" style="background-image: url('https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100');"></div>
+                  <div>
+                    <div class="review-name">Lucas · Designer</div>
+                    <div class="review-meta">Curitiba · PR</div>
+                  </div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>
+                “O clube de cafés é impecável. Todo mês descubro um produtor novo e o frescor da torra faz muita diferença.”
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-header">
+                <div class="review-user">
+                   <div class="avatar" style="background-image: url('https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100');"></div>
+                  <div>
+                    <div class="review-name">Ana · Criadora de conteúdo</div>
+                    <div class="review-meta">Belo Horizonte · MG</div>
+                  </div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>
+                “Meu cantinho do café virou cenário fixo dos vídeos. Todo mundo pergunta de onde é a máquina.”
+              </p>
+            </div>
+          </div>
+
+          <div class="ugc-grid">
+            <div class="ugc-item" style="background-image: url('https://images.pexels.com/photos/2067628/pexels-photo-2067628.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+            <div class="ugc-item" style="background-image: url('https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+            <div class="ugc-item" style="background-image: url('https://images.pexels.com/photos/2910874/pexels-photo-2910874.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+            <div class="ugc-item" style="background-image: url('https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona" class="section fade-up">
+        <div class="section-header">
+          <div>
+            <div class="section-tag">Como funciona</div>
+            <h2 class="section-title">Seu ritual em 3 passos</h2>
+          </div>
+          <p class="section-subtitle">
+            Da escolha do design à curadoria dos grãos, tudo foi pensado para que a experiência seja tão fluida quanto o espresso perfeito.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Escolha o design da máquina</h3>
+            <p class="step-text">
+              Selecione acabamentos, cores e detalhes que conversam com a estética do seu ambiente — do preto matte ao branco com dourado.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Selecione o plano de grãos</h3>
+            <p class="step-text">
+              Defina a frequência e o perfil sensorial que mais combina com você: clássicos equilibrados ou microlotes ousados.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Receba em casa</h3>
+            <p class="step-text">
+              Sua máquina chega pronta para uso, acompanhada dos primeiros pacotes de café especial, com instruções simples para o melhor resultado.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="planos" class="section fade-up">
+        <div class="section-header">
+          <div>
+            <div class="section-tag">Planos e preços</div>
+            <h2 class="section-title">Escolha o nível da sua experiência</h2>
+          </div>
+          <p class="section-subtitle">
+            Três opções para diferentes momentos: da máquina ideal para o seu espaço ao kit completo com assinatura de cafés especiais.
+          </p>
+        </div>
+
+        <div class="plans-grid">
+          <article class="plan">
+            <h3 class="plan-name">Só máquina</h3>
+            <p class="plan-price">
+              R$ 0.000
+              <span>à vista ou em até 10x</span>
+            </p>
+            <p class="plan-desc">
+              Para quem já tem seu fornecedor de café, mas quer uma máquina que respeite o design da casa.
+            </p>
+            <ul class="plan-list">
+              <li>Máquina de espresso com acabamento personalizado</li>
+              <li>Opções de preto matte, branco e detalhes em dourado</li>
+              <li>Configurações otimizadas para cafés especiais</li>
+            </ul>
+            <div class="plan-cta">
+              <button onclick="scrollToCTA()">Começar com só máquina</button>
+            </div>
+          </article>
+
+          <article class="plan featured">
+            <div class="plan-badge">Mais escolhido</div>
+            <h3 class="plan-name">Clube de assinatura</h3>
+            <p class="plan-price">
+              R$ 0.000
+              <span>/mês · cancele quando quiser</span>
+            </p>
+            <p class="plan-desc">
+              Para quem quer explorar cafés especiais com curadoria, sem se preocupar em repor o estoque.
+            </p>
+            <ul class="plan-list">
+              <li>Envio mensal de cafés especiais torrados na semana</li>
+              <li>Perfis sensoriais selecionados por especialistas</li>
+              <li>Acesso antecipado a microlotes e edições limitadas</li>
+            </ul>
+            <div class="plan-cta">
+              <button onclick="scrollToCTA()">Assinar o clube</button>
+            </div>
+          </article>
+
+          <article class="plan">
+            <div class="plan-badge">Kit completo</div>
+            <h3 class="plan-name">Máquina + clube</h3>
+            <p class="plan-price">
+              R$ 0.000
+              <span>com desconto exclusivo</span>
+            </p>
+            <p class="plan-desc">
+              A combinação perfeita: sua máquina personalizada + assinatura de cafés especiais com valor reduzido.
+            </p>
+            <ul class="plan-list">
+              <li>Máquina personalizada com acabamento premium</li>
+              <li>Assinatura mensal com desconto no valor do plano</li>
+              <li>Suporte dedicado para ajustes finos de extração</li>
+            </ul>
+            <div class="plan-cta">
+              <button onclick="scrollToCTA()">Quero o kit completo</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="faq" class="section fade-up">
+        <div class="section-header">
+          <div>
+            <div class="section-tag">FAQ</div>
+            <h2 class="section-title">Perguntas frequentes</h2>
+          </div>
+          <p class="section-subtitle">
+            Detalhes importantes, sem poluir o layout. Expanda as perguntas para entender como a Rota do Grão se encaixa na sua rotina.
+          </p>
+        </div>
+
+        <div class="faq">
+          <div class="accordion-item active">
+            <div class="accordion-header">
+              <div class="accordion-title">
+                A máquina funciona com qualquer café?
+              </div>
+              <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                Ela funciona com qualquer café em grão ou moído, mas foi calibrada para extrair o melhor de cafés especiais. Com o clube de assinatura, você garante grãos sempre frescos e no ponto ideal para a máquina.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-title">
+                Posso pausar ou cancelar a assinatura?
+              </div>
+              <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                Sim. Você pode pausar, alterar a frequência ou cancelar a qualquer momento, diretamente pela sua área do cliente, sem burocracia.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-title">
+                Como funciona a personalização do design?
+              </div>
+              <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                Você escolhe combinações de cores, acabamentos e detalhes metálicos. Nosso time valida a harmonização e envia um preview digital antes da produção.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-title">
+                E se eu não gostar do resultado ao vivo?
+              </div>
+              <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                Você conta com 30 dias de satisfação para solicitar ajustes ou troca de design, dentro das opções disponíveis.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fade-up">
+        <div class="guarantee">
+          <div class="guarantee-badge">
+            <div class="guarantee-ring">
+              <span></span>
+            </div>
+            <strong>30 dias de satisfação</strong>
+            <span>ou troca do design da sua máquina</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="formulario" class="form-section fade-up">
+        <div>
+          <h2 class="form-copy-title">Catálogo de cores exclusivo</h2>
+          <p class="form-copy-text">
+            Deixe seu nome e e-mail para receber o catálogo completo de combinações de cores, acabamentos e inspirações de cantinhos do café.
+          </p>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Obrigado! Em breve você receberá o catálogo de cores.');">
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input id="nome" type="text" placeholder="Como devemos te chamar?" required />
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" placeholder="Seu melhor e-mail" required />
+          </div>
+          <button class="btn-primary" type="submit">
+            Receber catálogo de cores
+            <span>↗</span>
+          </button>
+          <p class="form-note">
+            Prometemos manter sua caixa de entrada limpa: <span>sem spam</span>, apenas conteúdo relevante sobre café e design.
+          </p>
+        </form>
+      </section>
+
+      <section class="cta-final fade-up">
+        <p>
+          Não aceite o café comum. Eleve seu padrão — de sabor e de estética — com uma máquina que foi pensada para o seu espaço.
+        </p>
+        <button class="btn-primary" onclick="scrollToCTA()">
+          Quero personalizar meu kit agora
+          <span>↗</span>
+        </button>
+      </section>
+
+      <footer>
+        <div class="footer-links">
+          <a href="#">Termos</a>
+          <a href="#">Privacidade</a>
+          <a href="#">Contato</a>
+        </div>
+        <div class="footer-social">
+          <span>Redes</span>
+          <div class="social-pill">IG</div>
+          <div class="social-pill">PI</div>
+          <div class="social-pill">YT</div>
+        </div>
+        <div class="footer-security">
+          <div class="security-badge">Checkout seguro</div>
+          <span>Selos de segurança e criptografia de dados</span>
+        </div>
+      </footer>
     </div>
+  </main>
 
-    <footer class="footer-cta">
-        <div class="container">
-            <h3>Não aceite o café comum.<br>Eleve seu padrão.</h3>
-            <a href="#planos" class="btn">Quero personalizar minha máquina</a>
-        </div>
-    </footer>
+  <script>
+    document.querySelectorAll(".accordion-header").forEach((header) => {
+      header.addEventListener("click", () => {
+        const item = header.parentElement;
+        const isActive = item.classList.contains("active");
+        document.querySelectorAll(".accordion-item").forEach((i) => {
+          i.classList.remove("active");
+        });
+        if (!isActive) {
+          item.classList.add("active");
+        }
+      });
+    });
 
-    <div class="footer-bottom">
-        <div class="container">
-            <span>Rota do Grão © 2024 | Todos os direitos reservados.</span>
-            <div class="social-icons">
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-pinterest"></i>
-            </div>
-        </div>
-    </div>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
 
+    function scrollToCTA() {
+      const el = document.getElementById("formulario");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
