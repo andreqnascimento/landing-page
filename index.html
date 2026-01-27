@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rota do Grão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- CONFIGURAÇÕES GERAIS --- */
+        :root {
+            --bg-black: #0F0F0F;
+            --bg-white: #FFFFFF;
+            --bg-light: #F8F8F8;
+            --gold: #C6A87C;
+            --text-dark: #1A1A1A;
+            --text-gray: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .btn {
+            background-color: var(--gold);
+            color: #fff;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            filter: brightness(1.1);
+        }
+
+        /* --- HERO SECTION (ALTERADO PARA IMAGEM) --- */
+        .hero {
+            background-color: var(--bg-black);
+            color: white;
+            display: flex;
+            align-items: stretch;
+            min-height: 600px; /* Altura mínima da primeira tela */
+            overflow: hidden;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 400px; /* Garante espaço para o texto */
+        }
+
+        .brand-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #bbb;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 2.5rem;
+            max-width: 450px;
+            font-weight: 300;
+        }
+
+        .hero-image-container {
+            flex: 1.2; /* A imagem ocupa um pouco mais de espaço que o texto */
+            position: relative;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Faz a imagem preencher todo o espaço sem distorcer */
+            display: block;
+        }
+        
+        /* Ajuste para celular */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; }
+            .hero-image-container { min-height: 350px; flex: auto; }
+            .hero-content { padding: 40px 20px; min-width: auto; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+
+        /* --- DEMAIS SEÇÕES (Mantidas iguais) --- */
+        .benefits { padding: 80px 0; background: var(--bg-white); }
+        .benefits h2 { font-size: 1rem; color: var(--text-gray); margin-bottom: 2rem; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .b-card { text-align: center; }
+        .b-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom: 15px; }
+        .b-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; }
+
+        .social-proof { background-color: var(--bg-black); color: white; padding: 80px 0; }
+        .social-proof h2 { color: white; margin-bottom: 10px; }
+        .social-subtitle { text-align: center; color: #888; margin-bottom: 40px; font-weight: 300;}
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .review-img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333; }
+        .stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 8px; }
+        .review-text { font-size: 0.85rem; color: #ccc; font-style: italic; }
+
+        .how-it-works { padding: 80px 0; background-color: var(--bg-white); text-align: center; }
+        .steps-flex { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 30px; margin-top: 40px; }
+        .step { flex: 1; min-width: 200px; position: relative; }
+        .step:not(:last-child)::after { content: ''; position: absolute; top: 25px; right: -50%; width: 100%; height: 1px; background: #ddd; z-index: 0; }
+        @media (max-width: 768px) { .step:not(:last-child)::after { display: none; } }
+        .step-icon { width: 60px; height: 60px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--text-dark); background: white; position: relative; z-index: 1; }
+        
+        .pricing { padding: 80px 0; background-color: var(--bg-light); }
+        .pricing-grid { display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .price-card { background: white; padding: 40px 30px; border-radius: 8px; text-align: center; width: 300px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .price-card.featured { background: var(--bg-black); color: white; border: 1px solid var(--gold); transform: scale(1.05); position: relative; }
+        .badge { background: var(--gold); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; display: inline-block; margin-bottom: 15px; }
+
+        .faq { padding: 60px 0; background: white; }
+        .accordion { max-width: 800px; margin: 0 auto; border-top: 1px solid #eee; }
+        .acc-item { border-bottom: 1px solid #eee; padding: 15px 0; }
+        .acc-link { display: flex; justify-content: space-between; color: var(--text-dark); font-weight: 500; text-decoration: none; font-size: 0.9rem; }
+
+        .guarantee { text-align: center; padding: 40px 0; background: var(--bg-white); }
+        .guarantee i { color: var(--gold); font-size: 1.5rem; vertical-align: middle; margin-right: 10px; }
+        
+        .footer-cta { background: var(--bg-black); color: white; text-align: center; padding: 60px 20px; }
+        .footer-bottom { background: #000; color: #555; padding: 20px; text-align: center; font-size: 0.8rem; display: flex; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="brand-name">Rota do Grão</span>
+            <h1>O café que<br>completa a sua<br>decoração.</h1>
+            <p>Máquinas de espresso com design exclusivo e grãos especiais selecionados. Transforme seu cantinho do café no destaque da sua casa.</p>
+            <a href="#" class="btn">Quero personalizar minha máquina</a>
+        </div>
+        <div class="hero-image-container">
+            <img src="hero-nova.png" alt="Máquina de Espresso Rota do Grão - Design Premium Preto e Dourado">
+        </div>
+    </header>
+
+    <section class="benefits">
+        <div class="container">
+            <h2>Benefícios</h2>
+            <div class="benefits-grid">
+                <div class="b-card">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=400&q=80" alt="Design" class="b-img">
+                    <h3>Design que harmoniza</h3>
+                </div>
+                <div class="b-card">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80" alt="Barista" class="b-img">
+                    <h3>Café de Barista em casa</h3>
+                </div>
+                <div class="b-card">
+                    <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=400&q=80" alt="Frescor" class="b-img">
+                    <h3>Frescor da torra</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <div class="container">
+            <h2>Prova Social</h2>
+            <p class="social-subtitle">Quem já transformou seu ambiente</p>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80" alt="Ambiente 1" class="review-img">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">Minha sala ficou outra! - Ana P.</p>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80" alt="Ambiente 2" class="review-img">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">Design incrível e café perfeito. - Carlos M.</p>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1595861685116-43b6de55dfd8?auto=format&fit=crop&w=400&q=80" alt="Ambiente 3" class="review-img">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">Melhor investimento para a casa. - Fernanda L.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2>Como Funciona</h2>
+            <div class="steps-flex">
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-coffee"></i></div>
+                    <h3>1. Escolha o Design<br>da Máquina</h3>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-box"></i></div>
+                    <h3>2. Selecione o<br>Plano de Grãos</h3>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-door-open"></i></div>
+                    <h3>3. Receba em Casa</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2>Planos e Preços</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Só Máquina</h3>
+                </div>
+                <div class="price-card featured">
+                    <h3>Kit Completo</h3>
+                    <div class="badge">Recomendado</div>
+                    <div style="font-size: 0.8rem; border: 1px solid white; display: inline-block; padding: 2px 8px; border-radius: 4px;">Desconto Exclusivo</div>
+                </div>
+                <div class="price-card">
+                    <h3>Clube de Assinatura</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <div class="accordion">
+                <div class="acc-item">
+                    <a href="#" class="acc-link">Como funciona a personalização? <span>+</span></a>
+                </div>
+                <div class="acc-item">
+                    <a href="#" class="acc-link">Como é feita a cobrança? <span>+</span></a>
+                </div>
+                <div class="acc-item">
+                    <a href="#" class="acc-link">Como funciona o frete? <span>+</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="guarantee">
+        <i class="fas fa-shield-alt"></i>
+        <span>GARANTIA: 30 dias de satisfação ou troca do design</span>
+    </div>
+
+    <footer class="footer-cta">
+        <h3>Não aceite o café comum. Eleve seu padrão.</h3>
+        <a href="#" class="btn">Quero personalizar minha máquina</a>
+    </footer>
+
+    <div class="footer-bottom">
+        <span>Sobre | Contato | Termos</span>
+        <div>
+            <i class="fab fa-instagram" style="margin-right: 10px;"></i>
+            <i class="fab fa-facebook"></i>
+        </div>
+    </div>
+
+</body>
+</html>
